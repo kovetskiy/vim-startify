@@ -13,16 +13,11 @@ let s:sep = startify#get_separator()
 
 syntax sync fromstart
 
-syntax match StartifyBracket /.*\%9c/ contains=
-      \ StartifyNumber,
-      \ StartifySelect,
+syntax match StartifyBracket /.*\%9c/ contains=StartifyNumber,StartifySelect
 syntax match StartifySpecial /\V<empty buffer>\|<quit>/
 syntax match StartifyNumber  /^\s*\[\zs[^BSVT]\{-}\ze\]/
 syntax match StartifySelect  /^\s*\[\zs[BSVT]\{-}\ze\]/
-syntax match StartifyFile    /.*/ contains=
-      \ StartifyBracket,
-      \ StartifyPath,
-      \ StartifySpecial,
+syntax match StartifyFile    /.*/ contains=StartifyBracket,StartifyPath,StartifySpecial
 
 execute 'syntax match StartifySlash /\'. s:sep .'/'
 execute 'syntax match StartifyPath /\%9c.*\'. s:sep .'/ contains=StartifySlash'
